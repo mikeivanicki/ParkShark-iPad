@@ -5,7 +5,7 @@
 //  Created by Student on 11/5/24.
 //
 
-
+//test for new remote
 
 import UIKit
 import Foundation
@@ -32,24 +32,29 @@ class AlertsDetailViewController: UIViewController{
         
     }
     
+    func formatDateString(_ input: String) -> String? {
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        inputFormatter.locale = Locale(identifier: "en_US_POSIX")
+        
+
+        guard let date = inputFormatter.date(from: input) else { return nil }
+        
+        let outputFormatter = DateFormatter()
+        outputFormatter.dateStyle = .medium
+        outputFormatter.timeStyle = .short
+        outputFormatter.locale = Locale.current
+        
+       
+        return outputFormatter.string(from: date)
+    }
+
+    
     private func refreshUI() {
         loadViewIfNeeded()
-        /*
-        print(selectedAlert!.effDate)
-        print(selectedAlert!.endDate!)
         
-        if let effDateAsDate: Date = dateFormatterGet.date(from: selectedAlert!.effDate) {
-            print("eff date ========= \(effDateAsDate)")
-            startDate.text = dateFormatterPrint.string(from: effDateAsDate)
-        }
-        if let endDateAsDate: Date = dateFormatterGet.date(from: selectedAlert!.endDate!) {
-            print("end date ========= \(endDateAsDate)")
-            endDate.text = dateFormatterPrint.string(from: endDateAsDate)
-        }
-         */
-        
-        startDate.text = selectedAlert?.effDate
-        endDate.text = selectedAlert?.endDate
+        startDate.text = formatDateString(selectedAlert!.effDate)
+        endDate.text = formatDateString(selectedAlert!.endDate!)
         postedBy.text = String(selectedAlert?.userID ?? 0)
         taskDescription.text = selectedAlert?.message
     }

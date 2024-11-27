@@ -52,6 +52,7 @@ class AlertsTableViewController: UITableViewController {
 
         cell.alertTitle.text = alertsDS.alertResponse.alerts[indexPath.row].title
         
+        
         return cell
     }
     
@@ -63,7 +64,6 @@ class AlertsTableViewController: UITableViewController {
             splitViewController?.showDetailViewController(detailNavigationController, sender: nil)
         }
     }
-
     
     func fetchAlerts() {
     alertsDS.fetchAlerts() {
@@ -76,6 +76,8 @@ class AlertsTableViewController: UITableViewController {
         }
     }
 }
+    
+    
     
 
     /*

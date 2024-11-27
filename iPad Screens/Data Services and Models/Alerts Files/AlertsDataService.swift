@@ -41,7 +41,7 @@ class AlertsDataService {
     
     func fetchAlerts(_ completionHandler: @escaping (_ status: Bool) -> ()) {
         // URL as String
-        let requestAPI:String = "https://api.parkshark.mobi:443/alerts/getEffectiveAlerts"
+        let requestAPI:String = "https://api.parkshark.mobi:443/alerts/getAllActiveAlerts"
         
         
         // convert to URL
